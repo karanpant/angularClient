@@ -14,6 +14,7 @@ import { Component } from '@angular/core';
 
 export class SandboxComponent {
     name = 'Karan Pant';
+    roll=20;
     age = 36;
     person = {firstName: 'Steve', lastName:'Smith'}
 
