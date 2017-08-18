@@ -1,35 +1,39 @@
 import { Component } from '@angular/core';
-
+import { Customer } from './Customer';
 @Component({
     selector: 'sandbox',
-    template: `<h1>{{ name }} is {{ age }} years old.</h1>
-                <h2>My name is {{ person.firstName }} {{ person.lastName }}</h2>
-                <ul>
-                    <li>{{ 'Hello World' }}</li>
-                    <li>{{ 1 + 1 }}</li>
-                    <li>{{ showAge() }}
-                </ul>
-    `
+    template: `<h1>Hello {{ name }}.</h1>`
 })
 
 export class SandboxComponent {
-    name = 'Karan Pant';
-    roll=20;
-    age = 36;
-    person = {firstName: 'Steve', lastName:'Smith'}
+   customer:Customer
+   customers:Customer[];
+   constructor(){
+       this.customer = {
+           id:1,
+           name:'karna',
+           email:'karna@gmail.com'
+       }
 
-    constructor() {
-        console.log('Constructor ran');
-        // this.age = 36;
-        this.hasBirthday();
-    }
-
-    hasBirthday(){
-        this.age += 1;
-
-    }
-
-    showAge():number{
-        return this.age;
-    }
+       this.customers = [
+           {
+            id:1,
+            name:'Karan',
+            email:'karan@gmail.com'   
+           },
+           {
+            id:2,
+            name:'Rohan',
+            email:'rohan@gmail.com'
+           },
+           {
+            id:3,
+            name:'Rohn',
+            email:'rohn@gmail.com'
+           }
+       ]
+   }
+    
 }
+
+
