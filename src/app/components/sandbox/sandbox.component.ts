@@ -1,22 +1,31 @@
 import {Component} from '@angular/core';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'sandbox',
   template: `
     <h1>Hello World</h1>
-    <button (click)="changeValue()">Change Value</button>
-    <div *ngIf="value">
-      <h1>{{ text }}</h1>
+    <div *ngFor="let user of users">
+      <div class ="well">
+        <ul class="list-group">
+          <li class="list-group-item">Name: {{user.name}}</li>
+          <li class="list-group-item">Email: {{user.email}}</li>
+          <li class="list-group-item">Phone: {{user.phone}}</li>
+
+        </ul>
+        <br/>
+      </div>
     </div>
   `
 })
 
 export class SandboxComponent {
-  text: string = 'Hello World';
-  value: boolean = true;
+  users: any[];
 
-  changeValue() {
-    this.value = false
+  constructor(public dataService: DataService) {
+    this.dataService.getUsers().subscribe(users => {
+      // console.log(users);
+      this.users =users;
+    });
   }
-
 }
